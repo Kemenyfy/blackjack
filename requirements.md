@@ -15,7 +15,7 @@
     - [ ] Triggered by the Play Again Button
 - [x] Two Cards (Hidden) have to be dealt to the computer player (i.e. House)
     - [ ] Triggered by the Play Again Button
-- [ ] Human player must decide to "Hit" or "Stay"
+- [x] Human player must decide to "Hit" or "Stay"
     - If "Hit" add another card.
     - If "Stay" cede turn to the house.
 - [ ] If the Human player "Busts" then Game is Over. Human player loses.
