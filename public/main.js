@@ -41,7 +41,9 @@ const playAgain = () => {
 const hitPlayer = () => {
   cardDealt = deck.pop()
   console.log(cardDealt); 
-  document.querySelector('.dealtCardFive').textContent = cardDealt.rank + cardDealt.suit;
+  const newLi = document.createElement('li')
+  newLi.textContent = cardDealt.rank + cardDealt.suit
+  document.querySelector('.playerCards').appendChild(newLi);
 }
 
 
@@ -52,7 +54,5 @@ document.querySelector('.hit').addEventListener('click', hitPlayer)
 // const li = document.createElement('li')
 
 //   li.textContent = buyer.name
-//   // add the class
-//   li.classList.add('raffle-contestant')
 //   bucketList.appendChild(li)
 //   document.querySelector('#nameTextbox').value = ''
