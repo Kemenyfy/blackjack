@@ -10,6 +10,7 @@
 
 <body>
   <h1>Blackjack</h1>
+  <h2 class="winner">Who will win?</h2>
   <button class="play">Play</button>
   <section class="table">
     <section>
@@ -19,18 +20,18 @@
         <li class="dealtCardOne"></li>
         <li class="dealtCardTwo"></li>
       </ul>
-      <button class="hit">Hit</button>
-      <button>Stay</button>
     </section>  
     <section>
       <h3>Computer</h3>
-      <h6>Total =</h6>
-      <ul>
+      <h6 id="computerTotal">Total =</h6>
+      <ul class="computerCards">
         <li class="dealtCardThree"></li>
         <li class="dealtCardFour"></li>
       </ul>
     </section>
   </section>
+  <button class="hit">Hit</button>
+  <button class="stay">Stay</button>
   <script src="/main.js" charset="utf-8"></script>
 </body>
 
