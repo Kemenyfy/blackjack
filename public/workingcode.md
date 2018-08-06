@@ -42,12 +42,17 @@ const playAgain = () => {
   console.log(cardDealt); 
   computerCards.push(cardDealt)
   document.querySelector('.dealtCardFour').textContent = cardDealt.rank + cardDealt.suit;
+  let playerTotal = 0
+  for (let i = 0; i < playerCards.length; i++) {
+    playerTotal += playerCards[i].value;
+    document.querySelector('#playerTotal').textContent = playerTotal
+  }
+  let computerTotal = 0
+  for (let i = 0; i < computerCards.length; i++) {
+    computerTotal += computerCards[i].value;
+    document.querySelector('#computerTotal').textContent = computerTotal;
+  }
 }
-
-// const getPlayerCurrentTotal = () => {
-// }
-// console.log(total)
-// }
 
 const hitPlayer = () => {
   cardDealt = deck.pop()
@@ -56,17 +61,62 @@ const hitPlayer = () => {
   newLi.textContent = cardDealt.rank + cardDealt.suit
   document.querySelector('.playerCards').appendChild(newLi);
   playerCards.push(cardDealt)
-  let total = 0
+  let playerTotal = 0
   for (let i = 0; i < playerCards.length; i++) {
-    total += playerCards[i].value;
-    if (total > 21) {
-    
+    playerTotal += playerCards[i].value;
+    document.querySelector('#playerTotal').textContent = playerTotal;
+    if (playerTotal > 21) {
     document.querySelector(".winner").textContent = "House Wins!!!";
-    document.querySelector('#playerTotal').textContent = total
+    document.querySelector('.play').textContent = "Play Again"
+    }
   }
 }
+
+const hitComputer = () => {
+  console.log('Stay button was clicked')
+  let computerTotal = 0
+  for (let i = 0; i < computerCards.length; i++) {
+    computerTotal += computerCards[i].value;
+  } if (computerTotal < 17) {
+      cardDealt = deck.pop()
+      console.log(cardDealt);
+      const newLi = document.createElement('Li')
+      newLi.textContent = cardDealt.rank + cardDealt.suit
+      document.querySelector('.computerCards').appendChild(newLi);
+      computerCards.push(cardDealt);
+      let computerTotal = 0
+      for (let i = 0; i < computerCards.length; i++) {
+        computerTotal += computerCards[i].value;
+        document.querySelector('#computerTotal').textContent = computerTotal;
+      } if (computerTotal > 21) {
+        document.querySelector(".winner").textContent = "Player Wins!!!";
+        document.querySelector('.play').textContent = "Play Again"
+        } else {
+          compareChoice()
+        }
+    }
 }
 
-// document.querySelector('#playerTotal').textContent = getPlayerCurrentTotal()
+const compareChoice = () => {
+  let playerTotal = 0
+  for (let i = 0; i < playerCards.length; i++) {
+    playerTotal += playerCards[i].value;
+    document.querySelector('#playerTotal').textContent = playerTotal
+  }
+  let computerTotal = 0
+  for (let i = 0; i < computerCards.length; i++) {
+    computerTotal += computerCards[i].value;
+    document.querySelector('#computerTotal').textContent = computerTotal;
+  }
+  if (playerScore > computerScore) {
+    document.querySelector(".winner").textContent = "Player Wins!!!";
+    document.querySelector('.play').textContent = "Play Again"    
+  } else {
+    document.querySelector(".winner").textContent = "House Wins!!!";
+    document.querySelector('.play').textContent = "Play Again"
+  }
+}
+ 
 document.querySelector('.play').addEventListener('click', playAgain)
 document.querySelector('.hit').addEventListener('click', hitPlayer)
+document.querySelector('.stay').addEventListener('click', hitComputer)

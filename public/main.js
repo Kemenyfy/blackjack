@@ -6,7 +6,7 @@ const deck = []
 const playerCards = []
 const computerCards = []
 
-const playAgain = () => {
+const play = () => {
   deck.splice(0)
   for (let s = 0; s < suits.length; s++) {
     for (let r = 0; r < rank.length; r++) {
@@ -55,6 +55,13 @@ const playAgain = () => {
   }
 }
 
+const restartGame = () => {
+  const deck = []
+  const playerCards = []
+  const computerCards = []
+  document.location.reload()
+}
+
 const hitPlayer = () => {
   cardDealt = deck.pop()
   console.log(cardDealt); 
@@ -89,11 +96,15 @@ const hitComputer = () => {
       for (let i = 0; i < computerCards.length; i++) {
         computerTotal += computerCards[i].value;
         document.querySelector('#computerTotal').textContent = computerTotal;
-      }       
+      } if (computerTotal > 21) {
+          document.querySelector(".winner").textContent = "Player Wins!!!";
+          document.querySelector('.play').textContent = "Play Again"
+        } 
     }
 }
 
  
-document.querySelector('.play').addEventListener('click', playAgain)
+document.querySelector('.play').addEventListener('click', play)
+document.querySelector('.restartGame').addEventListener('click', restartGame)
 document.querySelector('.hit').addEventListener('click', hitPlayer)
 document.querySelector('.stay').addEventListener('click', hitComputer)
