@@ -46,12 +46,12 @@ const play = () => {
   let playerTotal = 0
   for (let i = 0; i < playerCards.length; i++) {
     playerTotal += playerCards[i].value;
-    document.querySelector('#playerTotal').textContent = playerTotal
+    // document.querySelector('#playerTotal').textContent = playerTotal
   }
   let computerTotal = 0
   for (let i = 0; i < computerCards.length; i++) {
     computerTotal += computerCards[i].value;
-    document.querySelector('#computerTotal').textContent = computerTotal;
+    // document.querySelector('#computerTotal').textContent = computerTotal;
   }
 }
 
@@ -72,10 +72,9 @@ const hitPlayer = () => {
   let playerTotal = 0
   for (let i = 0; i < playerCards.length; i++) {
     playerTotal += playerCards[i].value;
-    document.querySelector('#playerTotal').textContent = playerTotal;
+    // document.querySelector('#playerTotal').textContent = playerTotal;
     if (playerTotal > 21) {
-    document.querySelector(".winner").textContent = "House Wins!!!";
-    document.querySelector('.play').textContent = "Play Again"
+    document.querySelector(".winner").textContent = "Player busts, House Wins!!!";
     }
   }
 }
@@ -95,16 +94,37 @@ const hitComputer = () => {
       let computerTotal = 0
       for (let i = 0; i < computerCards.length; i++) {
         computerTotal += computerCards[i].value;
-        document.querySelector('#computerTotal').textContent = computerTotal;
+        // document.querySelector('#computerTotal').textContent = computerTotal;
       } if (computerTotal > 21) {
-          document.querySelector(".winner").textContent = "Player Wins!!!";
-          document.querySelector('.play').textContent = "Play Again"
-        } 
+          document.querySelector(".winner").textContent = "House busts, Player Wins!!!";
+        }
     }
 }
 
- 
+const compareScores = () => {
+  let playerTotal = 0
+  for (let i = 0; i < playerCards.length; i++) {
+    playerTotal += playerCards[i].value;
+    // document.querySelector('#playerTotal').textContent = playerTotal
+  }
+  let computerTotal = 0
+  for (let i = 0; i < computerCards.length; i++) {
+    computerTotal += computerCards[i].value;
+    // document.querySelector('#computerTotal').textContent = computerTotal;
+  }
+  if (computerTotal > playerTotal) {
+    document.querySelector(".winner").textContent = "House Wins!!!";
+  }
+  else if (playerTotal > computerTotal) {
+    document.querySelector(".winner").textContent = "Player Wins!!!";
+  }
+  else {
+    document.querySelector(".winner").textContent = "Game is tied!!!";
+  }
+}
+
 document.querySelector('.play').addEventListener('click', play)
 document.querySelector('.restartGame').addEventListener('click', restartGame)
 document.querySelector('.hit').addEventListener('click', hitPlayer)
 document.querySelector('.stay').addEventListener('click', hitComputer)
+document.querySelector('.endGame').addEventListener('click', compareScores)
