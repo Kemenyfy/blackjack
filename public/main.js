@@ -43,6 +43,7 @@ const play = () => {
   console.log(cardDealt); 
   computerCards.push(cardDealt)
   document.querySelector('.dealtCardFour').textContent = cardDealt.rank + cardDealt.suit;
+  document.querySelector('.dealtCardFour').style.display = "none";
   let playerTotal = 0
   for (let i = 0; i < playerCards.length; i++) {
     playerTotal += playerCards[i].value;
@@ -81,6 +82,7 @@ const hitPlayer = () => {
 
 const hitComputer = () => {
   console.log('Stay button was clicked')
+  document.querySelector('.dealtCardFour').style.display = "block";
   let computerTotal = 0
   for (let i = 0; i < computerCards.length; i++) {
     computerTotal += computerCards[i].value;
